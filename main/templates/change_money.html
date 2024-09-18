@@ -1,0 +1,57 @@
+{% load static %}
+<html lang="en">
+
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>환전 페이지</title>
+    <link rel="stylesheet" href="{% static 'css/style_change_money.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+
+</head>
+
+<header>
+    <div class="header_logo">
+        <img src="{% static 'css/ccc_logo.jpg' %}" alt="logo" /><span>창융PAY</span>
+    </div>
+      <nav>
+        <ul>
+          <li><a href="javascript:void(0);" onclick="window.location.reload();">통장</a></li>
+          <li><a href="/exchange">환율</a></li>
+          <li><a href="/">홈</a></li>
+        </ul>
+      </nav>
+</header>
+<body>
+    <div class="wrapper">
+          <h1>
+              환전         
+          </h1>
+          <form method = "post" >
+            {% csrf_token %}
+            <div class="input-box">
+            <input type="text" name="username" placeholder="studentID">
+            <i class='bx bxs-user'></i>
+            </div>
+            <div class="drop-container"> 
+                <select class="dropmenu" name="currency" id="currency">
+                    <option value="USD" selected>USD</option>
+                    <option value="KRW">PHP</option>
+                    <option value="JPY">JPY</option>
+                </select>
+                <div class="input-box">
+                    <input type="number" name="input" placeholder="input">
+                    <i class='bx bxs-user'></i>
+                </div>
+                
+            </div>
+            <button type="submit" class="btn">체크하기</button>
+        </form>
+            
+          
+    </div>
+    
+</body>
+</html>

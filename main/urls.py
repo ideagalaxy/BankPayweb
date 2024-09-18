@@ -7,4 +7,6 @@ urlpatterns = [
     path('log_in', views.login_page, name='log_in'),
     path('exchange', views.exchange_rate, name='exchange'),
     path('<int:pk>/',views.user_main_page,name="user_main_page"),
+    path('change_money',views.change_money,name="change_money"),
+
 ]
