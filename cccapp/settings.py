@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     "manager.apps.ManagerConfig",
     "player.apps.PlayerConfig",
 
+    'django.contrib.humanize',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -127,3 +128,5 @@ STATICFILES_DIRS = (
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = 'main.User'
+
+LOGOUT_REDIRECT_URL = '/'

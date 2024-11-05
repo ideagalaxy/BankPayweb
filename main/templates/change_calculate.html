@@ -1,12 +1,11 @@
 {% load static %}
-{% load humanize %}
 <html lang="en">
 
 <head>
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>환전 페이지</title>
+    <title>환율 계산기</title>
     <link rel="stylesheet" href="{% static 'css/style_change_money.css' %}">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     
@@ -19,24 +18,18 @@
     </div>
       <nav>
         <ul>
-            <li><a href="/change_calculate">계산기</a></li>
-          <li><a href="javascript:void(0);" onclick="window.location.reload();">환전</a></li>
+            
+          <li><a href="javascript:void(0);" onclick="window.location.reload();">계산기</a></li>
+          <li><a href="/change_money">환전</a></li>
           <li><a href="/exchange">입출금</a></li>
-          <li>
-            <form method="POST" action="{% url 'logout' %}" style="display: inline;">
-                {% csrf_token %}
-                <button type="submit" >
-                    로그아웃
-                </button>
-            </form>
-        </li>
+          <li><a href="/">홈</a></li>
         </ul>
       </nav>
 </header>
 <body>
     <div class="wrapper">
           <h1>
-              환전         
+              환율 계산기    
           </h1>
           <form method = "post" >
             {% csrf_token %}
@@ -47,7 +40,7 @@
             <div class="drop-container"> 
                 <select class="dropmenu" name="currency" id="currency">
                     <option value="USD" selected>USD</option>
-                    <option value="PHP">PHP</option>
+                    <option value="KRW">PHP</option>
                     <option value="JPY">JPY</option>
                 </select>
                 <div class="input-box">
@@ -58,23 +51,27 @@
             </div>
             {% if is_cell_possible %}
                 <h3>계산서</h3>
-                <p>{{input|intcomma}} 판매: {{get_won|intcomma}} 원 (수수료 포함)</p>
-                <p>환전 수수료  : {{charge|intcomma}} 원</p>
+                <p>{{input}} 판매: {{get_won}} 원 (수수료 포함)</p>
+                <p>환전 수수료  : {{charge}} 원</p>
             {% else %}
             {% endif %}
-
+            {% if show_limit %}
+                <h2>환전 가능 금액</h2>
+                <p>최대 {{limit}} {{currency}} 환전 가능</p><br>
+            {% else %}
+            {% endif %}
             {% if is_buy_possible %}
                 <h3>계산서</h3>
-                <p>{{input|intcomma}} 구매: {{use_money|intcomma}} 원 (수수료 포함)</p>
-                <p>환전수수료  : {{charge|intcomma}} 원</p>
+                <p>{{input}} 구매: {{use_money}} 원 (수수료 포함)</p>
+                <p>환전수수료  : {{charge}} 원</p>
             {% else %}
             {% endif %}
             
             
 
             <div class="button-container">
-                    <button type="submit" name="buy" class="btn">구매</button>
-                    <button type="submit" name="cell" class="btn">판매</button>
+                    <button type="submit" name="buy" class="btn">BUY 계산</button>
+                    <button type="submit" name="cell" class="btn">CELL 계산</button>
                 
             </div>
             

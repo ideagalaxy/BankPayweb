@@ -48,11 +48,7 @@ nav ul li a {
     color: #ffffffe5;
     text-decoration: none;  
     font-size: 20px;
-    white-space: nowrap; /* 텍스트가 줄 바꿈되지 않도록 설정 */
-    word-break: keep-all; /* 단어가 쪼개지는 것을 방지 */
 } 
-
-
 
 
 body{
@@ -156,30 +152,3 @@ header {
 }
 
 
-/* 반응형 디자인 */
-@media screen and (max-width: 1000px) {
-    .header_logo {
-        font-size: 20px;
-    }
-
-    /* 모바일에서는 메뉴를 세로로 표시 */
-    nav ul {
-        background-color: rgba(0, 0, 0, 0.8); /* 메뉴 배경 추가 */
-        position: fixed;
-        top: 100px;
-        width: 100%;
-        left: 0;
-        align-items: center;
-    }
-
-    nav ul li {
-        margin: 10px 0;
-    }
-
-    nav ul li a {
-        font-size: 15px;
-        white-space: nowrap; /* 텍스트가 줄 바꿈되지 않도록 설정 */
-        word-break: keep-all; /* 단어가 쪼개지는 것을 방지 */
-    }
-
-}

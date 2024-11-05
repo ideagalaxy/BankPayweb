@@ -30,3 +30,10 @@ class Exchange(models.Model):
 
     def __str__(self) -> str:
         return f"{self.dollar2won}won/dol, {self.yenn2won}won/yen, {self.pesso2won}won/yen"
+    
+class Log(models.Model):
+    username = models.CharField(max_length= 100)
+    currency = models.CharField(max_length= 100)
+    change = models.IntegerField(default = 0)
+    from django.utils import timezone
+    reg_time = models.DateTimeField(default=timezone.now)  
